@@ -1,2 +1,0 @@
-# LVMH-TXT
-LVMH TXT
