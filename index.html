@@ -653,10 +653,15 @@ async function processFile(fileObj, deVal, paraVal) {
   const paraValFmt = paraVal.padEnd(4).slice(0, 4);
 
   const text = await readFileLatin1(fileObj.file);
-  const nome = fileObj.name;
 
-  // split lines preserving newlines
-  let linhas = text.split('\n');
+  // split lines preserving newlines
+  let linhas = text.split('\n');
+
+  // Extrai da posição 9 a 18 (índices 8 a 17) da primeira linha para renomear o arquivo
+  let nome = fileObj.name;
+  if (linhas.length > 0 && linhas[0].length >= 17) {
+    nome = linhas[0].substring(8, 17) + '.txt';
+  }
 
   // Remove trailing empty lines
   while (linhas.length > 0 && linhas[linhas.length - 1].trim() === '') {
